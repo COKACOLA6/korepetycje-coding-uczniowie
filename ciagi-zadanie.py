@@ -4,40 +4,40 @@ import matplotlib.pyplot as plt
 
 class arytmetyczny:
     def __init__(self, a0, r):
-        self.a0 = ####
-        ##########
+        self.a0 = a0
+        self.r = r
 
 
     def nastepny_wyraz(self, an):
-        return ########
+        return an+self.r
     
 
     def wyraz_z_wzoru_rekurencyjnego(self, n):
-        ####### = self.a0
-        for _ in range(######, ####):
-            an = self.########(########)
-        return ######
+        an = self.a0
+        for _ in range(1,n+1):
+            an = self.nastepny_wyraz(an)
+        return an
     
 
     def tablica_wyrazow(self, n):
-        a = [None for _ in range(######)]
-        a[#####] = self.#####
-        for i in range(######, #####):
-            a[i] = self.#######(a[######])
+        a = [None for _ in range(n+1)]
+        a[0] = self.a0
+        for i in range(1,n+1):
+            a[i] = self.nastepny_wyraz(a[i-1])
         return a
     
 
     def tablica_wyrazow_wydruk(self, n):
-        a = self.#######(#######)
-        max_len = max( len(str(min(#######))), #####(###(#####(#######))) )
-        a_text = [str(#####).rjust(max_len) for an in a]
-        labels_text = [(##########).rjust(max_len) for i in range(n+1)]
+        a = self.tablica_wyrazow(n)
+        max_len = max( len(str(min(a))),len(str(max(a))))
+        a_text = [str(an).rjust(max_len) for an in a]
+        labels_text = [(i).rjust(max_len) for i in range(n+1)]
         print(labels_text)
         print(a_text)
 
 
     def wyraz_z_wzoru_ogolnego(self, n):
-        return self.a0 + ############
+        return self.a0 + self.r * n
     
 
     def ile_wyrazow(self, n1, n2):
@@ -119,3 +119,18 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
+a0 = a0
+a1 = a0 + r
+a2 = a1 + r = a0 + r + r
+a3 = a2 + r = a0 + r + r + r
+a4 = a3 + r = a0 + r + r + r + r
+a5 = a4 + r = a0 + r + r + r + r + r
+an = a0 + rn = a0 + r * n
+
+
+
+
+
+
+'''
