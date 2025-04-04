@@ -31,7 +31,7 @@ class arytmetyczny:
         a = self.tablica_wyrazow(n)
         max_len = max( len(str(min(a))),len(str(max(a))))
         a_text = [str(an).rjust(max_len) for an in a]
-        labels_text = [(i).rjust(max_len) for i in range(n+1)]
+        labels_text = [("a" + str(i)).rjust(max_len) for i in range(n+1)]
         print(labels_text)
         print(a_text)
 
@@ -41,20 +41,20 @@ class arytmetyczny:
     
 
     def ile_wyrazow(self, n1, n2):
-        return abs(######-######) + #####
+        return abs( n2-n1 ) +1
 
 
     def suma(self, n1, n2):
-        an1 = self.wyraz_z_wzoru_ogolnego(####)
-        an2 = self.##########(####)
-        srednia12 = ########
-        l = self.#######(#####, #####)
-        return ####### * #####
+        an1 = self.wyraz_z_wzoru_ogolnego(n1)
+        an2 = self.wyraz_z_wzoru_ogolnego(n2)
+        srednia12 = (an1 + an2)/2
+        l = self.ile_wyrazow(n1,n2)
+        return srednia12 * l 
     
 
     def wykres(self, n1, n2):
-        a = self.#########(######)
-        plt.plot(range(n1, n2+1), a[n1:n2+1])
+        a = self.tablica_wyrazow(n2)
+        plt.plot(range(n1, n2+1), a[n1:])
         plt.title(r"$a_n = a_{n-1} + r$")
         plt.xlabel("n")
         plt.ylabel(r"$a_n$")
@@ -64,7 +64,7 @@ class arytmetyczny:
     def wykres_sumy(self, n1, n2):
         s = [None for _ in range(n2+1)]
         for i in range(n1, n2+1):
-            s[i] = self.suma(#####, #####)
+            s[i] = self.suma(n1,i)
         plt.plot(range(n1, n2+1), s[n1:n2+1])
         plt.xlabel("n")
         plt.ylabel(r"$\sum_{n=n1}^{n2}a_n$".replace("n1", str(n1)).replace("n2", str(n2)))
@@ -73,15 +73,21 @@ class arytmetyczny:
 
     def wyraz_funkcja_rekurencyjna(self, n):
         if n == 0:
-            return #########
-        return self.########(self.########(########))
+            return self.a0
+        return self.nastepny_wyraz(self.wyraz_funkcja_rekurencyjna(n-1))
+
 
 
     @staticmethod
     def zadania_tekstowe():
         print("Zadania tekstowe")
         print("Na placu zebrało się 2138 osób. Pierwsza osoba wypowiedziała liczbę 7. Następnie każda kolejna osoba wypowiadała liczbę o 23 większą od poprzedniej. Jaką liczbę wypowie ostatnia osoba?")
-        odp1 = ##########################################
+        odp1 = 7 + 23 * 2137
+        ca = arytmetyczny(7,23)
+        n = 2137
+        print(ca.wyraz_z_wzoru_ogolnego(n))
+        
+
         print("Odpowiedź:", odp1)
     
 
