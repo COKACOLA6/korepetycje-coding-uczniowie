@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 tab =  []
 n = 0
 for i in range(11):
